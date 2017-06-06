@@ -1,1 +1,6 @@
 docker run --name local-postgres9.3.6 -p 5432:5432 -e POSTGRES_PASSWORD=mypassword -d  postgres:9.3.6
+
+use console to log into postgres the first time:
+
+sql> create role myapp with CREATEDB LOGIN PASSWORD 'mypassword'
+sql> create database mydatabase

@@ -1,14 +1,13 @@
 import datetime
 
-from django.utils import timezone
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import timezone
 
 from .models import Question
 
 
 class QuestionMethodTests(TestCase):
-
     def test_was_published_recently_with_future_question(self):
         """
         was_published_recently() should return False for questions whose
@@ -111,7 +110,8 @@ class QuestionIndexDetailTests(TestCase):
         The detail view of a question with a pub_date in the future should
         return a 404 not found.
         """
-        future_question = create_question(question_text='Future question.', days=5)
+        future_question = create_question(question_text='Future question.',
+                                          days=5)
         url = reverse('polls:detail', args=(future_question.id,))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
